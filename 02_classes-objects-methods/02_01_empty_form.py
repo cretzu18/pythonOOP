@@ -10,3 +10,35 @@
 #
 # Model such an application form as a Python class below, and instantiate
 # a few objects from it.
+
+class Form:
+    def __init__(self, name : str, age : int, allergies : list):
+        self.name = name
+        self.age = age
+        self.allergies = allergies
+
+    def __str__(self):
+        alrg = str()
+        if len(self.allergies) == 0:
+            alrg = "none"
+        else:
+            for a in self.allergies:
+                alrg += a + ", "
+            alrg = alrg.rstrip()
+            alrg = alrg[:-1]
+
+        return f"{self.name}, age: {self.age}, allergies: {alrg}"
+        
+
+if __name__ == "__main__":
+    name = "John Pacient"
+    age = 24
+    allergies = ["pollen", "pet dander", "dust"]
+    john = Form(name, age, allergies)
+    print(john)
+
+    name = "Olivia Pacient"
+    age = 32
+    allergies = []
+    olivia = Form(name, age, allergies)
+    print(olivia)
